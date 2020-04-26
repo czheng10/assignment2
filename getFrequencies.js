@@ -1,30 +1,19 @@
 const getFrequencies = (arr) => {
-    let num = [], freq = [], prev;
-    
-    arr.sort();
-    for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i] !== prev ) {
-            num.push(arr[i]);
-            freq.push(1);
-        } else {
-            freq[freq.length-1]++;
-        }
-        prev = arr[i];
-    }
+    let counter = {};
+    for (let i = 0; i< arr.length; i++) {
+	value = arr[i];
 
-    let ans = "{" + "\n";
-    for(let j = 0; j < num.length; j++){
-	if (j === num.length-1){
-	    ans+= num[j] + ": " + freq[j]  + "\n";
+	if (value in counter){
+	    
+	    counter[value] = counter[value] + 1;
 	}
 	else {
-	    ans+= num[j] + ": " + freq[j]  + ",\n" ;
+	    counter[value] = 1;
 	}
     }
-    ans += "}";
-    return ans;
+    return counter;
 }
 
 
-console.log(getFrequencies([1, 1, 5, 2, 2]));
+console.log(getFrequencies([1, 3, 2, 3, 1, 1, 5] ));
 module.exports = getFrequencies;
