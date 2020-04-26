@@ -12,13 +12,19 @@ const getFrequencies = (arr) => {
         prev = arr[i];
     }
 
-    let ans = "";
+    let ans = "{" + "\n";
     for(let j = 0; j < num.length; j++){
-	ans+= num[j] + ": " + freq[j]  + "\n";
+	if (j === num.length-1){
+	    ans+= num[j] + ": " + freq[j]  + "\n";
+	}
+	else {
+	    ans+= num[j] + ": " + freq[j]  + ",\n" ;
+	}
     }
+    ans += "}";
     return ans;
 }
 
 
-console.log(getFrequencies([1, 3, 2, 3, 1, 1, 5]));
+console.log(getFrequencies([1, 1, 5, 2, 2]));
 module.exports = getFrequencies;
